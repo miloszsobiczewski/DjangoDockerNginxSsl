@@ -2,10 +2,25 @@ version: "3"
 
 services:
   django:
+    container_name: django
     build: .
     volumes:
       - .:/app
     ports:
-      - "8000:8000"
+      - "9000:8000"
     command: >
-      python manage.py runserver 0.0.0.0:8000
+      python manage.py runserver 0.0.0.0:9000
+
+  nginx:
+    container_name: nginx
+    image: nginx:1.16.1-alpine
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./etc/ssl:/etc/ssl:ro
+      - ./etc/logs:/etc/logs
+    ports:
+      - 8000:80
+    depends_on:
+      - django
+
+
