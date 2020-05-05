@@ -11,21 +11,29 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from typing import List
+import environ
 
+from django.conf.locale.en import formats as en_formats
+
+
+env = environ.Env()
+root = environ.Path(__file__) - 2
+environ.Env.read_env(env_file=root(".env"))  # reading .env file
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+BASE_DIR = root()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '5rr-rb24c-65j3g*vd93%5_amutmsxy85@)rneuden8%h=i85#'
+SECRET_KEY: str = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG: bool = env.bool("DEBUG", default=False)
 
-ALLOWED_HOSTS = []
+# A list of strings representing the host/domain names that this Django site can serve.
+ALLOWED_HOSTS: List[str] = env.list("ALLOWED_HOSTS", default=[])
 
 
 # Application definition
