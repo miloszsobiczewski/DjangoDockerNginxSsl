@@ -1,0 +1,10 @@
+__pychache__
+*.pyc
+*.log*
+*.rdb
+*.pid
+*.sqlite3
+.DS_Store
+.idea
+.env
+
