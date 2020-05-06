@@ -8,8 +8,8 @@ services:
       - .:/app
     ports:
       - "8000:8000"
-    expose:
-      - "8000"
+#    expose:
+#      - "8000"
     command: >
       python manage.py runserver 0.0.0.0:8000
     networks:
@@ -23,8 +23,8 @@ services:
       - ./etc/ssl:/etc/ssl:ro
       - ./etc/logs:/etc/logs
     ports:
-      - "80:80"
-      - "443:443"
+      - "1337:88"
+      - "2337:443"
     depends_on:
       - django
     networks:
