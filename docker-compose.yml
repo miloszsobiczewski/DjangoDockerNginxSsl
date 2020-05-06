@@ -23,8 +23,8 @@ services:
       - ./etc/ssl:/etc/ssl:ro
       - ./etc/logs:/etc/logs
     ports:
-      - "1337:88"
-      - "2337:443"
+      - "80:88"
+      - "443:443"
     depends_on:
       - django
     networks:
