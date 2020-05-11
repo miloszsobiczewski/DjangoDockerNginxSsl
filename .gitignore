@@ -4,6 +4,7 @@ __pychache__
 *.rdb
 *.pid
 *.sqlite3
+*.pem
 .DS_Store
 .idea
 .env

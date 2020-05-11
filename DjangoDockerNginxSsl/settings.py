@@ -35,6 +35,11 @@ DEBUG: bool = env.bool("DEBUG", default=False)
 # A list of strings representing the host/domain names that this Django site can serve.
 ALLOWED_HOSTS: List[str] = env.list("ALLOWED_HOSTS", default=[])
 
+# SSL config
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# SECURE_SSL_REDIRECT = True
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
 
 # Application definition
 

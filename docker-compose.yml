@@ -7,9 +7,13 @@ services:
     volumes:
       - .:/app
     ports:
-      - "9000:80"
+      - "8000:8000"
+#    expose:
+#      - "8000"
     command: >
-      python manage.py runserver 0.0.0.0:9000
+      python manage.py runserver 0.0.0.0:8000
+    networks:
+      - nginx_network
 
   nginx:
     container_name: nginx
@@ -19,8 +23,13 @@ services:
       - ./etc/ssl:/etc/ssl:ro
       - ./etc/logs:/etc/logs
     ports:
-      - 80:80
+      - "80:88"
+      - "443:443"
     depends_on:
       - django
+    networks:
+      - nginx_network
 
-
+networks:
+  nginx_network:
+    driver: bridge
