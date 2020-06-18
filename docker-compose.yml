@@ -1,5 +1,7 @@
 version: "3"
 
+compose_projet_name: django-ssl
+
 services:
   django:
     container_name: django
@@ -8,8 +10,6 @@ services:
       - .:/app
     ports:
       - "8000:8000"
-#    expose:
-#      - "8000"
     command: >
       python manage.py runserver 0.0.0.0:8000
     networks:
@@ -23,7 +23,7 @@ services:
       - ./etc/ssl:/etc/ssl:ro
       - ./etc/logs:/etc/logs
     ports:
-      - "80:88"
+      - "80:80"
       - "443:443"
     depends_on:
       - django
